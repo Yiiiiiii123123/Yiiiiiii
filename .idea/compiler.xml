@@ -15,6 +15,7 @@
     <bytecodeTargetLevel>
       <module name="productdemo" target="17" />
       <module name="restfuldemo" target="17" />
+      <module name="Servlet_Maven" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
