@@ -180,7 +180,7 @@ public class ProductPoSqlProvider {
         sql.SELECT("`free_threshold`");
         sql.SELECT("`os`.`id`");
 
-        sql.FROM("goods_product");
+        sql.FROM("goods_product p");
         sql.LEFT_OUTER_JOIN("goods_onsale os ON `os`.`id` = `p`.`id`"); // Adjust 'product_id' as per actual foreign key
 
         applyWhere(sql, example, false);
