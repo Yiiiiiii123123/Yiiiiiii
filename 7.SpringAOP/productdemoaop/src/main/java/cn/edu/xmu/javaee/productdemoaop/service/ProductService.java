@@ -104,4 +104,9 @@ public class ProductService {
         return productDao.findProductByName_Join(name);
     }
 
+    @Transactional
+    public List<Product> retrieveProductByName_Jpa(String name, boolean all) throws BusinessException{
+        return productDao.retrieveProductByName_Jpa(name, all);
+    }
+
 }

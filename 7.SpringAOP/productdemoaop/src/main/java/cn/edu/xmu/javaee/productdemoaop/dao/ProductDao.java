@@ -8,6 +8,7 @@ import cn.edu.xmu.javaee.productdemoaop.dao.bo.OnSale;
 import cn.edu.xmu.javaee.productdemoaop.dao.bo.Product;
 import cn.edu.xmu.javaee.productdemoaop.dao.bo.User;
 import cn.edu.xmu.javaee.productdemoaop.mapper.generator.ProductPoMapper;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.ProductPoMapper_Jpa;
 import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.OnSalePo;
 import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPo;
 import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPoExample;
@@ -23,11 +24,13 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
  * @author Ming Qiu
  **/
+
 @Repository
 public class ProductDao {
 
@@ -38,6 +41,7 @@ public class ProductDao {
     private OnSaleDao onSaleDao;
 
     private ProductAllMapper productAllMapper;
+    private ProductPoMapper_Jpa productPoMapper_Jpa;
 
     @Autowired
     public ProductDao(ProductPoMapper productPoMapper, OnSaleDao onSaleDao, ProductAllMapper productAllMapper) {
@@ -205,6 +209,26 @@ public class ProductDao {
         List<ProductAllPo> productPoList = productAllMapper.selectByJoinExample(name);
         productList =  productPoList.stream().map(o->CloneFactory.copy(new Product(), o)).collect(Collectors.toList());
         logger.debug("findProductByName_join: productList = {}", productList);
+        return productList;
+    }
+
+    public List<Product> retrieveProductByName_Jpa(String name, boolean all) throws BusinessException {
+        List<Product> productList = new ArrayList<>();
+        ProductPoExample example = new ProductPoExample();
+        ProductPoExample.Criteria criteria = example.createCriteria();
+        criteria.andNameEqualTo(name);
+        //List<ProductPo> productPoList = productPoMapper.selectByExample(example);
+        List<ProductPo> productPoList = this.productPoMapper_Jpa.findByName(name);
+        for (ProductPo po : productPoList){
+            Product product = null;
+            if (all) {
+                product = this.retrieveFullProduct(po);
+            } else {
+                product = CloneFactory.copy(new Product(), po);
+            }
+            productList.add(product);
+        }
+        logger.debug("retrieveProductByName: productList = {}", productList);
         return productList;
     }
 }

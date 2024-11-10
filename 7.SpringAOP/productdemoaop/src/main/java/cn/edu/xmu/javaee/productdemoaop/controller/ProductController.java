@@ -56,7 +56,7 @@ public class ProductController {
 
 
     @GetMapping("")
-    public ReturnObject searchProductByName(@RequestParam String name, @RequestParam(required = false, defaultValue = "auto") String type) {
+    public ReturnObject searchProductByName(@RequestParam String name, @RequestParam(required = false) String type) {
         ReturnObject retObj = null;
         List<Product> productList = null;
         if (null != type && type.equals("manual")){
@@ -64,7 +64,7 @@ public class ProductController {
         }  else if(null != type && type.equals("auto")){
             productList = productService.retrieveProductByName(name, true);
         }else{
-            productList = productService.findProductByName_Join(name);
+            productList = productService.retrieveProductByName_Jpa(name, true);
         }
         List<ProductDto> data = productList.stream().map(o->CloneFactory.copy(new ProductDto(),o)).collect(Collectors.toList());
         retObj = new ReturnObject(data);
