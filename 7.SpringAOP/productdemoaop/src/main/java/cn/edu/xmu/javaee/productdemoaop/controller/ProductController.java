@@ -21,7 +21,7 @@ import static cn.edu.xmu.javaee.productdemo.util.Common.changeHttpStatus;
 /**
  * 商品控制器
  * @author Ming Qiu
- */
+gti */
 @RestController /*Restful的Controller对象*/
 @RequestMapping(value = "/products", produces = "application/json;charset=UTF-8")
 public class ProductController {
