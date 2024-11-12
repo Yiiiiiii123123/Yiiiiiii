@@ -105,8 +105,13 @@ public class ProductService {
     }
 
     @Transactional
+<<<<<<< HEAD
     public List<Product> findProductByName_JPA(String name) throws BusinessException{
         return productDao.findProductByName_JPA(name);
+=======
+    public List<Product> retrieveProductByName_Jpa(String name, boolean all) throws BusinessException{
+        return productDao.retrieveProductByName_Jpa(name, all);
+>>>>>>> 93556a54763b0ecef0c7589d54ce3850230593ad
     }
 
 }

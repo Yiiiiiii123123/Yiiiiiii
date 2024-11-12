@@ -21,7 +21,7 @@ import static cn.edu.xmu.javaee.productdemo.util.Common.changeHttpStatus;
 /**
  * 商品控制器
  * @author Ming Qiu
- */
+gti */
 @RestController /*Restful的Controller对象*/
 @RequestMapping(value = "/products", produces = "application/json;charset=UTF-8")
 public class ProductController {
@@ -56,17 +56,22 @@ public class ProductController {
 
 
     @GetMapping("")
-    public ReturnObject searchProductByName(@RequestParam String name, @RequestParam(required = false, defaultValue = "auto") String type) {
+    public ReturnObject searchProductByName(@RequestParam String name, @RequestParam(required = false) String type) {
         ReturnObject retObj = null;
         List<Product> productList = null;
         if (null != type && type.equals("manual")){
             productList = productService.findProductByName_manual(name);
         }  else if(null != type && type.equals("auto")){
             productList = productService.retrieveProductByName(name, true);
+<<<<<<< HEAD
         }else if(null != type && type.equals("Join")){
             productList = productService.findProductByName_Join(name);
         }else{
             productList = productService.findProductByName_JPA(name);
+=======
+        }else{
+            productList = productService.retrieveProductByName_Jpa(name, true);
+>>>>>>> 93556a54763b0ecef0c7589d54ce3850230593ad
         }
         //
         List<ProductDto> data = productList.stream().map(o->CloneFactory.copy(new ProductDto(),o)).collect(Collectors.toList());

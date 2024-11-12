@@ -6,14 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="productdemoaop" />
         <module name="rocketmqreceiver" />
+        <module name="productdemoaop" />
         <module name="rocketmqsender" />
         <module name="productdemo" />
         <module name="restfuldemo" />
         <module name="order" />
       </profile>
     </annotationProcessing>
+<<<<<<< HEAD
+=======
+    <bytecodeTargetLevel>
+      <module name="productdemo" target="17" />
+      <module name="restfuldemo" target="17" />
+      <module name="Servlet_Maven" target="11" />
+    </bytecodeTargetLevel>
+>>>>>>> 93556a54763b0ecef0c7589d54ce3850230593ad
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

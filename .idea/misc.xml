@@ -4,14 +4,17 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/7.SpringAOP/productdemoaop/pom.xml" />
         <option value="$PROJECT_DIR$/10. SpringData_Mongo/order/pom.xml" />
         <option value="$PROJECT_DIR$/10.SpringData_Mongo/order/pom.xml" />
         <option value="$PROJECT_DIR$/11.RocketMQ/RocketMQDemo/pom.xml" />
         <option value="$PROJECT_DIR$/11.RocketMQ/RocketMQReceiver/pom.xml" />
         <option value="$PROJECT_DIR$/11.RocketMQ/RocketMQSender/pom.xml" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/4.SpringMVC/RestFulDemo/pom.xml" />
         <option value="$PROJECT_DIR$/5.MyBatis/productdemo/pom.xml" />
+=======
+        <option value="$PROJECT_DIR$/7.SpringAOP/productdemoaop/pom.xml" />
+>>>>>>> 93556a54763b0ecef0c7589d54ce3850230593ad
       </list>
     </option>
   </component>

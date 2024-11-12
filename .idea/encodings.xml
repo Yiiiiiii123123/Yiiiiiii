@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/10.SpringData_Mongo/order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/11.RocketMQ/RocketMQReceiver/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/11.RocketMQ/RocketMQReceiver/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/11.RocketMQ/RocketMQSender/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/11.RocketMQ/RocketMQSender/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/4.SpringMVC/RestFulDemo/src/main/java" charset="UTF-8" />

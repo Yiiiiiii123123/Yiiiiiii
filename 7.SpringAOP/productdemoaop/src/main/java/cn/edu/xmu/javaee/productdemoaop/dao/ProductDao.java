@@ -6,6 +6,11 @@ import cn.edu.xmu.javaee.core.model.ReturnNo;
 import cn.edu.xmu.javaee.productdemoaop.dao.bo.OnSale;
 import cn.edu.xmu.javaee.productdemoaop.dao.bo.Product;
 import cn.edu.xmu.javaee.productdemoaop.dao.bo.User;
+<<<<<<< HEAD
+=======
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.ProductPoMapper;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.ProductPoMapper_Jpa;
+>>>>>>> 93556a54763b0ecef0c7589d54ce3850230593ad
 import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.OnSalePo;
 import cn.edu.xmu.javaee.productdemoaop.mapperjpa.OnSaleMapper_jpa;
 import cn.edu.xmu.javaee.productdemoaop.mapperjpa.ProductByNameMapper_jpa;
@@ -25,11 +30,13 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
  * @author Ming Qiu
  **/
+
 @Repository
 public class ProductDao {
 
@@ -40,6 +47,7 @@ public class ProductDao {
     private OnSaleDao onSaleDao;
 
     private ProductAllMapper productAllMapper;
+    private ProductPoMapper_Jpa productPoMapper_Jpa;
 
     ProductByNameMapper_jpa productByNameMapper;
     OnSaleMapper_jpa onSaleMapper;
@@ -215,6 +223,7 @@ public class ProductDao {
         return productList;
     }
 
+<<<<<<< HEAD
     public List<Product> findProductByName_JPA(String name) throws BusinessException{
         List<Product> productList = new ArrayList<>();
         List<ProductPo> productAllList = productByNameMapper.findByName(name);
@@ -229,6 +238,25 @@ public class ProductDao {
             productList.add(product);
         }
         logger.debug("findProductByName_join: productList = {}", productList);
+=======
+    public List<Product> retrieveProductByName_Jpa(String name, boolean all) throws BusinessException {
+        List<Product> productList = new ArrayList<>();
+        ProductPoExample example = new ProductPoExample();
+        ProductPoExample.Criteria criteria = example.createCriteria();
+        criteria.andNameEqualTo(name);
+        //List<ProductPo> productPoList = productPoMapper.selectByExample(example);
+        List<ProductPo> productPoList = this.productPoMapper_Jpa.findByName(name);
+        for (ProductPo po : productPoList){
+            Product product = null;
+            if (all) {
+                product = this.retrieveFullProduct(po);
+            } else {
+                product = CloneFactory.copy(new Product(), po);
+            }
+            productList.add(product);
+        }
+        logger.debug("retrieveProductByName: productList = {}", productList);
+>>>>>>> 93556a54763b0ecef0c7589d54ce3850230593ad
         return productList;
     }
 }
