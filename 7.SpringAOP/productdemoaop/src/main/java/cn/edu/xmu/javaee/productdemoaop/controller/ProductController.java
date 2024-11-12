@@ -68,6 +68,7 @@ public class ProductController {
         }else{
             productList = productService.findProductByName_JPA(name);
         }
+        //
         List<ProductDto> data = productList.stream().map(o->CloneFactory.copy(new ProductDto(),o)).collect(Collectors.toList());
         retObj = new ReturnObject(data);
         return  retObj;
